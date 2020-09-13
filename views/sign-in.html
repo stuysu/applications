@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Title</title>
+		<meta name="google-signin-scope" content="profile email" />
+		<meta
+			name="google-signin-client_id"
+			content="{{ GOOGLE_CLIENT_ID | safe }}"
+		/>
+		<script src="https://apis.google.com/js/platform.js"></script>
+		<style>
+			.container {
+				min-height: 90vh;
+				padding: 0 0.5rem;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				max-width: 1400px;
+				margin: auto;
+			}
+
+			.main {
+				padding: 2.5rem 0.5rem;
+				flex: 1;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+			}
+
+			.inline-center {
+				text-align: center;
+			}
+
+			#error {
+				color: red;
+			}
+		</style>
+
+		<script>
+			let initialized = false;
+			gapi.load('auth2', function () {
+				gapi.auth2.init().then(function () {
+					var auth2 = gapi.auth2.getAuthInstance();
+					auth2.signOut().then(() => (initialized = true));
+				});
+			});
+
+			async function onSignIn(data) {
+				if (!initialized) {
+					return;
+				}
+				const idToken = data.wc.id_token;
+				const response = await fetch('/api/login', {
+					method: 'POST',
+					mode: 'cors',
+					cache: 'no-cache',
+					credentials: 'same-origin',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					redirect: 'follow',
+					referrerPolicy: 'no-referrer',
+					body: JSON.stringify({
+						idToken
+					})
+				}).then(res => res.json());
+
+				if (response.success) {
+					window.location.reload();
+				} else {
+					document.getElementById('error').innerText =
+						response.error.message;
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div class="container">
+			<main class="main inline-center">
+				<img
+					src="https://stuysu.org/images/editedsulogo.svg"
+					style="width: 200px"
+					alt="SU Logo"
+				/>
+
+				<h2>Welcome to the StuySU anonymous application process</h2>
+				<p>
+					To get started please sign in with your @stuy.edu gmail
+					account
+				</p>
+				<div
+					class="g-signin2"
+					data-onsuccess="onSignIn"
+					data-theme="light"
+				></div>
+				<br />
+				<p id="error"></p>
+			</main>
+		</div>
+	</body>
+</html>
