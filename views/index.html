@@ -16,7 +16,7 @@
 				flex-direction: column;
 				justify-content: center;
 				align-items: center;
-				max-width: 1400px;
+				max-width: 500px;
 				margin: auto;
 			}
 
@@ -64,8 +64,59 @@
 
 				<h1>Welcome back {{user.name}}</h1>
 				<a href="#" onclick="signOut()">Sign Out</a>
-				<h2>Your Anonymous Application ID Is: {{ userCode.code }}</h2>
+				<h2 style="font-weight: normal">Your Anonymous Application Code Is: <b><code>{{ userCode.code }}</code></b></h2>
 				<p>Please include it in your Student Union application.</p>
+				<br />
+				<h3>How does it work?</h3>
+				<p>
+					When you sign in with Google we receive some of the
+					following fields about you:
+				</p>
+				<pre style="text-align: left">
+{
+	...
+	"sub": "110169484474386276334",
+	...
+	// Expiration time
+	"exp": "1433981953",
+
+	"email": "testuser@gmail.com",
+	"email_verified": "true",
+	"name" : "Test User",
+	"picture": "...",
+	"given_name": "Test",
+	"family_name": "User",
+	"locale": "en"
+}</pre
+				>
+				<p>
+					The <code>sub</code> field represents an id for you,
+					specifically for this app.
+				</p>
+				<p>
+					We hash this field with the id of the application you're
+					applying to in order to get a repeatable value while also
+					keeping your original <code>sub</code> secret.
+				</p>
+				<p>
+					We then generate a one-time code and store it in the
+					database and we use the hash from the previous step to find
+					the code that belongs to you.
+				</p>
+				<p>
+					As for communicating the <code>sub</code> field back and
+					forth with a server, we use something called a
+					<a href="https://jwt.io/" target="_blank">JWT</a> to ensure that you can't
+					change your sub but that we also don't need to store your
+					session information on the server
+				</p>
+				<h3>What does this mean?</h3>
+				<p>Your identity always remains secret.</p>
+				<p>The only way for us to let you know if you got selected if for you to come back to this site and check.</p>
+				<p>There's no way for us to contact you if you do not reveal your identity through this site after we release results.</p>
+				<p>If you provide the wrong value for your code on the google form, you won't be able to receive a decision. Make sure you enter the correct code!</p>
+				<br/>
+				<p>If you want to look through the code for this app, you may do so on our github repository: <a href="https://github.com/stuysu/applications" target="_blank">https://github.com/stuysu/applications</a> </p>
 			</main>
 		</div>
 	</body>
