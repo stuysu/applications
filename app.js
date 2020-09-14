@@ -11,7 +11,12 @@ const logger = require('morgan');
 const models = require('./database/models');
 const crypto = require('crypto');
 
-app.use(logger('dev'));
+app.use(
+	logger('dev', {
+		skip: (req, res) =>
+			res.statusCode < 400 && process.env.NODE_ENV === 'production'
+	})
+);
 
 app.use(cookieParser(COOKIE_SECRET));
 app.use(bodyParser.urlencoded({ extended: false }));
