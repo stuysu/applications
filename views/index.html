@@ -2,6 +2,8 @@
 <html lang="en">
 	<head>
 		<title>StuySU Applications</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
 		<link
 			rel="shortcut icon"
 			type="image/x-icon"
@@ -64,9 +66,69 @@
 
 				<h1>Welcome back {{user.name}}</h1>
 				<a href="#" onclick="signOut()">Sign Out</a>
-				<h2 style="font-weight: normal">Your Anonymous Application Code Is: <b><code>{{ userCode.code }}</code></b></h2>
-				<p>Please include it in your Student Union application.</p>
-				<br />
+				<h2 style="font-weight: normal">
+					Your Anonymous Application Code Is:
+					<b><code>{{ userCode.code }}</code></b>
+				</h2>
+			</main>
+			<main>
+				<h3>Results:</h3>
+
+				{% if result %} {% if result.status === "approved" %}
+				<p>
+					Hello!
+					<br /><br />
+					Congratulations! You have made it past the first round of
+					applications for leadership positions in the Stuyvesant
+					Student Union. Please click
+					<a
+						href="https://calendly.com/stuy-student-union/leadership-position-interviews"
+						>here</a
+					>
+					or use the Calendly integration below to sign up for an
+					interview. Interviews will be held via Zoom from Saturday,
+					September 26th through Monday, September 28th and will be
+					ten minutes long. Please sign up as soon as possible, as
+					spots fill up quickly. <br /><br />
+					Looking forward to meeting with you soon!
+					<br /><br />
+					Best,
+					<br />
+					Stuyvesant SU Executive Council ’20-’21
+				</p>
+				<!-- Calendly inline widget begin -->
+				<div
+					class="calendly-inline-widget"
+					data-url="https://calendly.com/stuy-student-union/leadership-position-interviews"
+					style="width: 1001px; max-width: 90vw; height: 630px"
+				></div>
+				<script
+					type="text/javascript"
+					src="https://assets.calendly.com/assets/external/widget.js"
+				></script>
+				<!-- Calendly inline widget end -->
+				{% else %}
+				<p>
+					Hello, <br /><br />
+					After reading your application for Student Union leadership
+					positions, we are unfortunately not able to give you an
+					interview.
+					<br /><br />
+					We had a pool of extremely talented and qualified applicants
+					this year and as much as we would have liked to, we are not
+					able to interview every applicant. However, don’t let this
+					deter you! We will soon be sending out Student Union member
+					applications, which we strongly encourage you to apply for.
+				</p>
+				{% endif %} {% else %}
+				<p>
+					We did not receive an application from you. If you believe
+					this to be an error, reach out to us at exec@stuysu.org
+				</p>
+				{% endif %}
+			</main>
+			<hr />
+			<main>
 				<h3>How does it work?</h3>
 				<p>
 					When you sign in with Google we receive some of the
@@ -106,17 +168,35 @@
 				<p>
 					As for communicating the <code>sub</code> field back and
 					forth with a server, we use something called a
-					<a href="https://jwt.io/" target="_blank">JWT</a> to ensure that you can't
-					change your sub but that we also don't need to store your
-					session information on the server
+					<a href="https://jwt.io/" target="_blank">JWT</a> to ensure
+					that you can't change your sub but that we also don't need
+					to store your session information on the server
 				</p>
 				<h3>What does this mean?</h3>
 				<p>Your identity always remains secret.</p>
-				<p>The only way for us to let you know if you got selected if for you to come back to this site and check.</p>
-				<p>There's no way for us to contact you if you do not reveal your identity through this site after we release results.</p>
-				<p>If you provide the wrong value for your code on the google form, you won't be able to receive a decision. Make sure you enter the correct code!</p>
-				<br/>
-				<p>If you want to look through the code for this app, you may do so on our github repository: <a href="https://github.com/stuysu/applications" target="_blank">https://github.com/stuysu/applications</a> </p>
+				<p>
+					The only way for us to let you know if you got selected if
+					for you to come back to this site and check.
+				</p>
+				<p>
+					There's no way for us to contact you if you do not reveal
+					your identity through this site after we release results.
+				</p>
+				<p>
+					If you provide the wrong value for your code on the google
+					form, you won't be able to receive a decision. Make sure you
+					enter the correct code!
+				</p>
+				<br />
+				<p>
+					If you want to look through the code for this app, you may
+					do so on our github repository:
+					<a
+						href="https://github.com/stuysu/applications"
+						target="_blank"
+						>https://github.com/stuysu/applications</a
+					>
+				</p>
 			</main>
 		</div>
 	</body>

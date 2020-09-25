@@ -7,7 +7,7 @@
 	"scripts": {
 		"test": "mocha",
 		"start": "node index",
-		"dev": "npx nodemon index",
+		"dev": "npx nodemon *.js,*.html",
 		"build": "npx sequelize db:migrate",
 		"prettier": "npx prettier --write ."
 	},
@@ -16,6 +16,7 @@
 		"body-parser": "latest",
 		"connect-session-sequelize": "^7.0.1",
 		"cookie-parser": "^1.4.5",
+		"csv-parse": "^4.12.0",
 		"dotenv": "latest",
 		"express": "latest",
 		"express-async-errors": "^3.1.1",
@@ -24,6 +25,7 @@
 		"honeybadger": "^1.4.0",
 		"jsonwebtoken": "^8.5.1",
 		"morgan": "^1.10.0",
+		"mysql2": "^2.2.5",
 		"nunjucks": "^3.2.2",
 		"sequelize": "^6.3.5",
 		"sqlite3": "^5.0.0"

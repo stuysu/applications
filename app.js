@@ -62,9 +62,16 @@ app.get('/', async (req, res) => {
 		});
 	}
 
+	const result = await models.results.findOne({
+		where: {
+			code: userCode.code
+		}
+	});
+
 	res.render('index.html', {
 		user: req.jwt.user,
-		userCode
+		userCode,
+		result
 	});
 });
 
