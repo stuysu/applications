@@ -62,7 +62,7 @@ app.get('/', async (req, res) => {
 		});
 	}
 
-	const result = await models.results.findOne({
+	const results = await models.results.findAll({
 		where: {
 			code: userCode.code
 		}
@@ -71,7 +71,7 @@ app.get('/', async (req, res) => {
 	res.render('index.html', {
 		user: req.jwt.user,
 		userCode,
-		result
+		results
 	});
 });
 
