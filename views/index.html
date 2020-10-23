@@ -72,34 +72,33 @@
 				</h2>
 			</main>
 			<main>
-				<h3>Results:</h3>
+				<h3>Freshman Caucus Member Results:</h3>
 
-				{% if results.length %} {% if result.status === "approved" %}
+				{% if results.length %} {% if results[0].status === "approved"
+				%}
 				<p>
-					Hello!
+					Hello there,<br /><br/>
+					It’s been quite difficult choosing between all of your
+					amazing applications, as we have received over 60 of them.
+					We were blown away by your responses, even if some of them
+					were submitted at two in the morning.
 					<br /><br />
-					Congratulations! You have made it past the first round of
-					applications for leadership positions in the Stuyvesant
-					Student Union. Please click
-					<a
-						href="https://calendly.com/stuy-student-union/leadership-position-interviews"
-						>here</a
-					>
-					or use the Calendly integration below to sign up for an
-					interview. Interviews will be held via Zoom from Saturday,
-					September 26th through Monday, September 28th and will be
-					ten minutes long. Please sign up as soon as possible, as
-					spots fill up quickly. <br /><br />
-					Looking forward to meeting with you soon!
+					That being said, we would like to congratulate you on being
+					accepted into the next round of our cabinet recruitments.
+					Your commitment as well as skill has caught our interest,
+					and through our interviews we would like to get to know you
+					better.
 					<br /><br />
-					Best,
-					<br />
-					Stuyvesant SU Executive Council ’20-’21
+					Please proceed by scrolling down to our calendly and reserving
+					an interview time:
+					<br/><br/>
+					Once again, congratulations, and we hope to talk to you
+					soon! Daniel Jung and Ryan Lee
 				</p>
 				<!-- Calendly inline widget begin -->
 				<div
 					class="calendly-inline-widget"
-					data-url="https://calendly.com/stuy-student-union/leadership-position-interviews"
+					data-url="https://calendly.com/c/AFFVRBLQT434EIOL"
 					style="width: 1001px; max-width: 90vw; height: 630px"
 				></div>
 				<script
@@ -109,21 +108,20 @@
 				<!-- Calendly inline widget end -->
 				{% else %}
 				<p>
-					Hello, <br /><br />
-					After reading your application for Student Union leadership
-					positions, we are unfortunately not able to give you an
-					interview.
-					<br /><br />
-					We had a pool of extremely talented and qualified applicants
-					this year and as much as we would have liked to, we are not
-					able to interview every applicant. However, don’t let this
-					deter you! We will soon be sending out Student Union member
-					applications, which we strongly encourage you to apply for.
+					Hello there,<br/><br/>
+					It’s been quite difficult choosing between all of your amazing applications as we have received over 60 of them. We were blown away by your responses, even if some of them were submitted at two in the morning.
+<br/><br/>
+					Unfortunately, your application has not passed the first round.
+<br/><br/>
+					Please do not be discouraged though. This year’s applications were extremely competitive, and you should be proud of your efforts. Not only that, we will remember your dedication in the future, as there will be many other ways you can participate in the Sophomore Caucus!
+<br/><br/>
+					Remember to stay well,<br/>
+					Daniel Jung and Ryan Lee
 				</p>
 				{% endif %} {% else %}
 				<p>
 					We did not receive an application from you. If you believe
-					this to be an error, reach out to us at exec@stuysu.org
+					this to be an error, reach out to us at executive@stuysu.org
 				</p>
 				{% endif %}
 			</main>
