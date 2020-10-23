@@ -16,7 +16,8 @@ module.exports = (sequelize, DataTypes) => {
   results.init({
     code: DataTypes.STRING,
     positions: DataTypes.STRING,
-    status: DataTypes.ENUM('approved', 'rejected')
+    status: DataTypes.ENUM('approved', 'rejected'),
+    application: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'results',
