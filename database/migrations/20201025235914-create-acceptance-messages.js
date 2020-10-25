@@ -12,7 +12,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       status: {
-        type: Sequelize.STRING
+        type: Sequelize.ENUM('approved', 'rejected')
       },
       message: {
         type: Sequelize.TEXT

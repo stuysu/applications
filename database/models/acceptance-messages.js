@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
   };
   acceptance - messages.init({
     application: DataTypes.STRING,
-    status: DataTypes.STRING,
+    status: DataTypes.ENUM('approved', 'rejected'),
     message: DataTypes.TEXT
   }, {
     sequelize,
