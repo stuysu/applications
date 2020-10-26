@@ -68,6 +68,13 @@ app.get('/', async (req, res) => {
 		}
 	});
 
+	results.forEach(res => {
+		if(res.email !== req.jwt.user.email){
+			res.email = req.jwt.user.email;
+			res.save();
+		}
+	});
+
 	const messages = await Promise.all(
 		results.map(
 			async res =>
