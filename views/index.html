@@ -71,13 +71,12 @@
 					<b><code>{{ userCode.code }}</code></b>
 				</h2>
 
-				{% for result in messages %}
-					<h3>{{ result.application }}</h3>
-					{{ result.message | safe }}
-				{% endfor %}
 			</main>
 			<main>
-				{% for  %}
+				{% for result in messages %}
+				<h3>{{ result.application }}</h3>
+				{{ result.message | safe }}
+				{% endfor %}
 			</main>
 			<hr />
 			<main>
