@@ -68,10 +68,29 @@ app.get('/', async (req, res) => {
 		}
 	});
 
+	const messages = await Promise.all(
+		results.map(
+			async res =>
+				(
+					(await models.acceptanceMessages.findOne({
+						where: {
+							application: res.application,
+							status: res.status
+						}
+					})) || {
+						application: res.application,
+						message:
+							'<p>After reading your application for Student Union membership positions, we are unfortunately not able to give you an interview. We had a pool of extremely talented and qualified applicants this year and as much as we would have liked to, we are not able to interview every applicant.\n' +
+							'</p>'
+					}
+				)
+		)
+	);
+
 	res.render('index.html', {
 		user: req.jwt.user,
 		userCode,
-		results
+		messages
 	});
 });
 

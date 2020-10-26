@@ -70,60 +70,14 @@
 					Your Anonymous Application Code Is:
 					<b><code>{{ userCode.code }}</code></b>
 				</h2>
+
+				{% for result in messages %}
+					<h3>{{ result.application }}</h3>
+					{{ result.message | safe }}
+				{% endfor %}
 			</main>
 			<main>
-				<h3>Sophomore Caucus Member Results:</h3>
-
-				{% if results.length %} {% if results[0].status === "approved"
-				%}
-				<p>
-					Hello there,<br /><br/>
-					It’s been quite difficult choosing between all of your
-					amazing applications, as we have received over 60 of them.
-					We were blown away by your responses, even if some of them
-					were submitted at two in the morning.
-					<br /><br />
-					That being said, we would like to congratulate you on being
-					accepted into the next round of our cabinet recruitments.
-					Your commitment as well as skill has caught our interest,
-					and through our interviews we would like to get to know you
-					better.
-					<br /><br />
-					Please proceed by scrolling down to our calendly and reserving
-					an interview time:
-					<br/><br/>
-					Once again, congratulations, and we hope to talk to you
-					soon! Daniel Jung and Ryan Lee
-				</p>
-				<!-- Calendly inline widget begin -->
-				<div
-					class="calendly-inline-widget"
-					data-url="https://calendly.com/c/AFFVRBLQT434EIOL"
-					style="width: 1001px; max-width: 90vw; height: 630px"
-				></div>
-				<script
-					type="text/javascript"
-					src="https://assets.calendly.com/assets/external/widget.js"
-				></script>
-				<!-- Calendly inline widget end -->
-				{% else %}
-				<p>
-					Hello there,<br/><br/>
-					It’s been quite difficult choosing between all of your amazing applications as we have received over 60 of them. We were blown away by your responses, even if some of them were submitted at two in the morning.
-<br/><br/>
-					Unfortunately, your application has not passed the first round.
-<br/><br/>
-					Please do not be discouraged though. This year’s applications were extremely competitive, and you should be proud of your efforts. Not only that, we will remember your dedication in the future, as there will be many other ways you can participate in the Sophomore Caucus!
-<br/><br/>
-					Remember to stay well,<br/>
-					Daniel Jung and Ryan Lee
-				</p>
-				{% endif %} {% else %}
-				<p>
-					We did not receive an application from you. If you believe
-					this to be an error, reach out to us at executive@stuysu.org
-				</p>
-				{% endif %}
+				{% for  %}
 			</main>
 			<hr />
 			<main>

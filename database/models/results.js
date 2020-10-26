@@ -17,7 +17,8 @@ module.exports = (sequelize, DataTypes) => {
     code: DataTypes.STRING,
     positions: DataTypes.STRING,
     status: DataTypes.ENUM('approved', 'rejected'),
-    application: DataTypes.STRING
+    application: DataTypes.STRING,
+    email: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'results',
