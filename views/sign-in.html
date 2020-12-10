@@ -60,7 +60,7 @@
 				if (!initialized) {
 					return;
 				}
-				const idToken = data.wc.id_token;
+				const idToken = data.xc.id_token;
 				const response = await fetch('/api/login', {
 					method: 'POST',
 					mode: 'cors',
