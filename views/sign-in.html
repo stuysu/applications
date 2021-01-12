@@ -57,10 +57,12 @@
 			});
 
 			async function onSignIn(data) {
+				console.log(data);
 				if (!initialized) {
 					return;
 				}
-				const idToken = data.xc.id_token;
+				const key = Object.keys(data).find(a => data[a].access_token);
+				const idToken = data[key].access_token;
 				const response = await fetch('/api/login', {
 					method: 'POST',
 					mode: 'cors',
