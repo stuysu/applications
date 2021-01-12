@@ -61,8 +61,8 @@
 				if (!initialized) {
 					return;
 				}
-				const key = Object.keys(data).find(a => data[a].access_token);
-				const idToken = data[key].access_token;
+				const key = Object.keys(data).find(a => data[a].id_token);
+				const idToken = data[key].id_token;
 				const response = await fetch('/api/login', {
 					method: 'POST',
 					mode: 'cors',
